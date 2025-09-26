@@ -1,0 +1,46 @@
+.header {
+position: sticky;
+top: 0;
+z-index: 50;
+background: rgba(11, 15, 20, 0.72);
+backdrop-filter: saturate(160%) blur(10px);
+border-bottom: 1px solid var(--border);
+}
+
+
+.row {
+height: 72px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.brand img { height: 28px; }
+
+
+.nav { display: flex; gap: var(--space-4); width: 100%;}
+
+
+.link {
+color: var(--muted);
+text-decoration: none;
+}
+
+
+.link:hover { color: var(--text); }
+
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-left: 16px;
+}
+.langBtn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 4px 10px;
+  cursor: pointer;
+}
