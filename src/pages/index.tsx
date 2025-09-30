@@ -7,7 +7,7 @@ import heroStyles from '@site/src/components/hero/hero.module.css';
 import mySkillsStyles from '@site/src/components/my-skills/my-skills.module.css';
 import MySkills, { SkillItem } from '@site/src/components/my-skills';
 import MyProjectHighlights, { ProjectItem } from '@site/src/components/my-project-highlights';
-
+import ContactMe from "@site/src/components/contact-me";
 
 export default function Home(): JSX.Element {
 
@@ -158,6 +158,8 @@ For example: Why are you passionate about coding? What inspires you to improve y
         headline="My project highlights"
         projects={projects}
       />
+
+<ContactMe />
 
     </Layout>
   );
