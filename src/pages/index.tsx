@@ -18,7 +18,7 @@ export default function Home(): JSX.Element {
     { name: 'Static site generator', iconSrc: '/img/ssg.svg' },
     { name: 'Python', iconSrc: '/img/python.svg' },
     { name: 'Shell scripting', iconSrc: '/img/shell-light.svg' },
-    { name: 'YAML', iconSrc: '/img/yaml.svg' },
+    { name: 'YAML', iconSrc: '/img/yaml-light.svg' },
     { name: 'Container', iconSrc: '/img/docker.svg' },
     { name: 'CI/CD with GitHub Actions', iconSrc: '/img/gha.svg' },
     { name: 'IT Security', iconSrc: '/img/security.svg' },
