@@ -1,0 +1,66 @@
+:root{
+  --myskills-bg: #222A30;      /* page background */
+  --myskills-surface: #2C3640; /* card bg */
+  --myskills-border: #3a4652;  /* card border */
+  --myskills-title: #EAF1FF;   /* heading */
+  --myskills-text: #C9D6E7;    /* label */
+}
+
+.wrap {
+  background: var(--myskills-bg);
+  padding: 56px 0 72px;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  color: var(--myskills-title);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin: 0 0 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--myskills-surface);
+  border: 1px solid var(--myskills-border);
+  border-radius: 18px;
+  height: 140px;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  box-shadow: 0 1px 0 rgba(0,0,0,.12) inset;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.label {
+  color: var(--myskills-text);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { height: 120px; }
+}
