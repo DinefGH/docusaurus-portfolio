@@ -124,17 +124,19 @@ Features JWT auth, CORS config, Nginx API proxying, and GitHub Actions CI/CD for
       <a id="top" />
 
 
-      <Header
-        nav={[
-          { label: 'About me', href: '#hero' },
-          { label: 'My Skills', href: '#my-skills' },
-          { label: 'My Projects', href: '#my-project-highlights' },
-          { label: 'Contact', href: '#contact' },
-        ]}
-      >
-        <button type="button" className={headerStyles.langBtn}>EN</button>
-        <button type="button" className={headerStyles.langBtn}>DE</button>
-      </Header>
+<Header
+  nav={[
+    { label: 'About me', href: '#hero' },
+    { label: 'My skills', href: '#my-skills' },
+    { label: 'My projects', href: '#my-project-highlights' },
+    { label: 'Contact', href: '#contact' },
+  ]}
+  locale="en"
+  onLocaleChange={(loc) => {
+    // Replace with Docusaurus i18n path switch if you’re using locales
+    window.location.pathname = loc === 'de' ? '/de/' : '/';
+  }}
+/>
 
 <section id="hero">
   <Hero
