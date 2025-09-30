@@ -18,14 +18,14 @@ const Header: React.FC<HeaderProps> = ({
   const [open, setOpen] = useState(false);
   const firstFocusable = useRef<HTMLButtonElement | null>(null);
 
-  // Close on ESC
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  // Simple focus management when opening
+
   useEffect(() => {
     if (open && firstFocusable.current) firstFocusable.current.focus();
     document.body.style.overflow = open ? 'hidden' : '';

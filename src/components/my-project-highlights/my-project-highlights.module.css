@@ -116,7 +116,6 @@
 
 /* actions */
 .actions {
-  margin-top: 18px;
   display: flex;
   gap: 12px;
   justify-content: flex-end;

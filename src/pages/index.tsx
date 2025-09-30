@@ -8,6 +8,7 @@ import mySkillsStyles from '@site/src/components/my-skills/my-skills.module.css'
 import MySkills, { SkillItem } from '@site/src/components/my-skills';
 import MyProjectHighlights, { ProjectItem } from '@site/src/components/my-project-highlights';
 import ContactMe from "@site/src/components/contact-me";
+import Footer from '@site/src/components/footer';
 
 export default function Home(): JSX.Element {
 
@@ -162,6 +163,8 @@ For example: Why are you passionate about coding? What inspires you to improve y
       />
 
 <ContactMe />
+
+<Footer name="Fabian Dürr" legalHref="/legal" />
 
     </Layout>
   );
