@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./contact-me.module.css";
+import Translate from "@docusaurus/Translate";
 
 export default function ContactMe() {
   return (
@@ -7,21 +8,45 @@ export default function ContactMe() {
       <div className={styles.container}>
         {/* Left column */}
         <div className={styles.left}>
-          <h2 className={styles.title}>Contact me</h2>
+          <h2 className={styles.title}>
+            <Translate id="contact.title">Contact me</Translate>
+          </h2>
           <p className={styles.text}>
-            Include information like:
+            <Translate id="contact.info">
+              Include information like:
+            </Translate>
           </p>
           <ul className={styles.list}>
-            <li>Feel free to reach out with job offers or opportunities</li>
-            <li>What role are you looking for?</li>
-            <li>How you will contribute to the new team</li>
-            <li>Are you open for remote work or relocation?</li>
+            <li>
+              <Translate id="contact.point1">
+                Feel free to reach out with job offers or opportunities
+              </Translate>
+            </li>
+            <li>
+              <Translate id="contact.point2">
+                What role are you looking for?
+              </Translate>
+            </li>
+            <li>
+              <Translate id="contact.point3">
+                How you will contribute to the new team
+              </Translate>
+            </li>
+            <li>
+              <Translate id="contact.point4">
+                Are you open for remote work or relocation?
+              </Translate>
+            </li>
           </ul>
         </div>
 
         {/* Right column */}
         <div className={styles.right}>
-          <p className={styles.subtitle}>Looking forward to hearing from you!</p>
+          <p className={styles.subtitle}>
+            <Translate id="contact.subtitle">
+              Looking forward to hearing from you!
+            </Translate>
+          </p>
           <div className={styles.contactInfo}>
             <a
               href="mailto:fabian.onscreen644@passinbox.com"
@@ -37,7 +62,7 @@ export default function ContactMe() {
               className={styles.contactItem}
             >
               <img src="/img/linkedin-icon.svg" alt="LinkedIn" />
-              Profile Page
+              <Translate id="contact.linkedin">Profile Page</Translate>
             </a>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './footer.module.css';
+import Translate, { translate } from '@docusaurus/Translate';
+import Link from '@docusaurus/Link';
 
 interface FooterProps {
   name: string;                  
@@ -11,7 +13,8 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({
   name,
   year = new Date().getFullYear(),
-  legalLabel = 'Legal notice',
+  // default English text but will be replaced by translations if available
+  legalLabel = translate({ id: 'footer.legal', message: 'Legal notice' }),
   legalHref = '/legal',
 }) => {
   const scrollToTop = () => {
@@ -38,9 +41,9 @@ const Footer: React.FC<FooterProps> = ({
 
         <div className={styles.copy}>© {name} {year}</div>
 
-        <a className={styles.legal} href={legalHref}>
-          {legalLabel}
-        </a>
+<Link className={styles.legal} to="/legal">
+  {legalLabel /* already translated */}
+</Link>
       </div>
     </footer>
   );

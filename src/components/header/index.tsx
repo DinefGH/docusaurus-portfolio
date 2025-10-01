@@ -1,39 +1,48 @@
+// src/components/header/index.tsx
 import React, {useEffect, useRef, useState} from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+// Internal helper that builds the “same page but other locale” URL:
+import {useAlternatePageUtils} from '@docusaurus/theme-common/internal';
 import styles from './header.module.css';
 
 export interface NavItem { label: string; href: string; }
+
 interface HeaderProps {
   logoSrc?: string;
   nav: ReadonlyArray<NavItem>;
-  locale?: 'en' | 'de';
-  onLocaleChange?: (loc: 'en' | 'de') => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
-  logoSrc,
-  nav,
-  locale = 'en',
-  onLocaleChange,
-}) => {
+const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
   const [open, setOpen] = useState(false);
   const firstFocusable = useRef<HTMLButtonElement | null>(null);
 
+  const {
+    i18n: { currentLocale },
+  } = useDocusaurusContext();
 
+  // Docusaurus will compute the correct alternate-locale URL for the current page,
+  // preserving path, search, and hash.
+  const {createUrl} = useAlternatePageUtils();
+  const enUrl = createUrl({locale: 'en', fullyQualified: false});
+  const deUrl = createUrl({locale: 'de', fullyQualified: false});
+
+  // ESC closes overlay
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-
+  // focus + scroll lock
   useEffect(() => {
     if (open && firstFocusable.current) firstFocusable.current.focus();
     document.body.style.overflow = open ? 'hidden' : '';
   }, [open]);
 
-  const switchLocale = (loc: 'en'|'de') => {
-    onLocaleChange?.(loc);
+  // Helper: navigate then close (for mobile)
+  const go = (href: string) => {
     setOpen(false);
+    window.location.assign(href);
   };
 
   return (
@@ -54,20 +63,28 @@ const Header: React.FC<HeaderProps> = ({
           ))}
         </nav>
 
-        {/* Desktop locale */}
+        {/* Desktop language switch (anchors styled like buttons) */}
         <div className={styles.lang}>
-          <button
-            type="button"
-            className={`${styles.langBtn} ${locale === 'en' ? styles.langActive : ''}`}
-            onClick={() => switchLocale('en')}
-            aria-pressed={locale === 'en'}
-          >EN</button>
-          <button
-            type="button"
-            className={`${styles.langBtn} ${locale === 'de' ? styles.langActive : ''}`}
-            onClick={() => switchLocale('de')}
-            aria-pressed={locale === 'de'}
-          >DE</button>
+          <a
+            href={enUrl}
+            className={styles.langBtn}
+            aria-pressed={currentLocale === 'en'}
+            onClick={(e) => {
+              if (currentLocale === 'en') { e.preventDefault(); }
+            }}
+          >
+            EN
+          </a>
+          <a
+            href={deUrl}
+            className={styles.langBtn}
+            aria-pressed={currentLocale === 'de'}
+            onClick={(e) => {
+              if (currentLocale === 'de') { e.preventDefault(); }
+            }}
+          >
+            DE
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -84,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({
         </button>
       </div>
 
-      {/* Mobile overlay menu */}
+      {/* Mobile overlay */}
       {open && (
         <div className={styles.overlay} role="dialog" aria-modal="true">
           <button
@@ -100,7 +117,12 @@ const Header: React.FC<HeaderProps> = ({
           <ul className={styles.menu} role="menu">
             {nav.map((item) => (
               <li key={item.href} role="none">
-                <a role="menuitem" href={item.href} className={styles.menuLink} onClick={() => setOpen(false)}>
+                <a
+                  role="menuitem"
+                  href={item.href}
+                  className={styles.menuLink}
+                  onClick={() => setOpen(false)}
+                >
                   {item.label}
                 </a>
               </li>
@@ -110,14 +132,20 @@ const Header: React.FC<HeaderProps> = ({
           <div className={styles.menuLang}>
             <button
               type="button"
-              className={`${styles.menuLangBtn} ${locale === 'en' ? styles.menuLangActive : ''}`}
-              onClick={() => switchLocale('en')}
-            >EN</button>
+              className={styles.menuLangBtn}
+              onClick={() => go(enUrl)}
+              aria-pressed={currentLocale === 'en'}
+            >
+              EN
+            </button>
             <button
               type="button"
-              className={`${styles.menuLangBtn} ${locale === 'de' ? styles.menuLangActive : ''}`}
-              onClick={() => switchLocale('de')}
-            >DE</button>
+              className={styles.menuLangBtn}
+              onClick={() => go(deUrl)}
+              aria-pressed={currentLocale === 'de'}
+            >
+              DE
+            </button>
           </div>
         </div>
       )}
