@@ -111,7 +111,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
             aria-label="Close menu"
             onClick={() => setOpen(false)}
           >
-            ×
+            
           </button>
 
           <ul className={styles.menu} role="menu">
