@@ -3,7 +3,7 @@ import styles from './my-project-highlights.module.css';
 
 export interface ProjectTag {
   label: string;
-  iconSrc?: string; // optional small icon in the chip
+  iconSrc?: string;
 }
 
 export interface ProjectItem {
@@ -36,9 +36,7 @@ const MyProjectHighlights: React.FC<ProjectHighlightsProps> = ({
       <div className={styles.container}>
         <h2 className={styles.h2}>{headline}</h2>
 
-        {/* ------------------ DESKTOP GRID ------------------ */}
         <div className={styles.grid}>
-          {/* Left numbered list */}
           <ol className={styles.list} aria-label="Project list">
             {projects.map((p, i) => (
               <li key={p.id} className={styles.listItem}>
@@ -61,7 +59,6 @@ const MyProjectHighlights: React.FC<ProjectHighlightsProps> = ({
             )}
           </ol>
 
-          {/* Right featured card */}
           <article className={styles.card} aria-live="polite">
             <div className={styles.cardHead}>
               <h3 className={styles.cardTitle}>{active.title}</h3>
@@ -117,7 +114,6 @@ const MyProjectHighlights: React.FC<ProjectHighlightsProps> = ({
           </article>
         </div>
 
-        {/* ------------------ MOBILE STACK ------------------ */}
         <div className={styles.stack} aria-label="Projects">
           {projects.map((p, i) => (
             <article key={p.id} className={styles.stackCard}>

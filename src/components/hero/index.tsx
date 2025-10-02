@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './hero.module.css';
 
 interface HeroProps {
-  greeting: string;          // "Hey there. 👋 I am"
-  name: string;              // "Felix Wallke"
-  role: string;              // "Security operations developer"
-  about: string;             // short paragraph
-  cta: { label: string; href: string }; // primary button
-  avatarSrc: string;         // /img/your-photo.jpg
+  greeting: string;
+  name: string;
+  role: string;
+  about: string;
+  cta: { label: string; href: string };
+  avatarSrc: string;
   avatarAlt?: string;
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./contact-me.module.css";
 import Translate from "@docusaurus/Translate";
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export default function ContactMe() {
   return (
     <section id="contact" className={styles.contact}>
       <div className={styles.container}>
-        {/* Left column */}
         <div className={styles.left}>
           <h2 className={styles.title}>
             <Translate id="contact.title">Contact me</Translate>
@@ -40,7 +40,6 @@ export default function ContactMe() {
           </ul>
         </div>
 
-        {/* Right column */}
         <div className={styles.right}>
           <p className={styles.subtitle}>
             <Translate id="contact.subtitle">
@@ -52,7 +51,7 @@ export default function ContactMe() {
               href="mailto:fabian.onscreen644@passinbox.com"
               className={styles.contactItem}
             >
-              <img src="/img/mail-icon.svg" alt="Email" />
+            <img src={useBaseUrl('/img/mail-icon.svg')} alt="Email" />
               fabian.onscreen644@passinbox.com
             </a>
             <a
@@ -61,7 +60,8 @@ export default function ContactMe() {
               rel="noopener noreferrer"
               className={styles.contactItem}
             >
-              <img src="/img/linkedin-icon.svg" alt="LinkedIn" />
+              
+              <img src={useBaseUrl('/img/linkedin-icon.svg')} alt="LinkedIn" />
               <Translate id="contact.linkedin">Profile Page</Translate>
             </a>
           </div>

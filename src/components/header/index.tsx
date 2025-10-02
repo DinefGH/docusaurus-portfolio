@@ -1,7 +1,7 @@
 // src/components/header/index.tsx
 import React, {useEffect, useRef, useState} from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-// Internal helper that builds the “same page but other locale” URL:
+
 import {useAlternatePageUtils} from '@docusaurus/theme-common/internal';
 import styles from './header.module.css';
 
@@ -20,26 +20,21 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
     i18n: { currentLocale },
   } = useDocusaurusContext();
 
-  // Docusaurus will compute the correct alternate-locale URL for the current page,
-  // preserving path, search, and hash.
   const {createUrl} = useAlternatePageUtils();
   const enUrl = createUrl({locale: 'en', fullyQualified: false});
   const deUrl = createUrl({locale: 'de', fullyQualified: false});
 
-  // ESC closes overlay
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  // focus + scroll lock
   useEffect(() => {
     if (open && firstFocusable.current) firstFocusable.current.focus();
     document.body.style.overflow = open ? 'hidden' : '';
   }, [open]);
 
-  // Helper: navigate then close (for mobile)
   const go = (href: string) => {
     setOpen(false);
     window.location.assign(href);
@@ -54,7 +49,6 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
           </a>
         )}
 
-        {/* Desktop nav */}
         <nav className={styles.nav} aria-label="Primary">
           {nav.map((item) => (
             <a key={item.href} href={item.href} className={styles.link}>
@@ -63,7 +57,6 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
           ))}
         </nav>
 
-        {/* Desktop language switch (anchors styled like buttons) */}
         <div className={styles.lang}>
           <a
             href={enUrl}
@@ -87,7 +80,6 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
           </a>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
           className={styles.burger}
@@ -101,7 +93,6 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, nav }) => {
         </button>
       </div>
 
-      {/* Mobile overlay */}
       {open && (
         <div className={styles.overlay} role="dialog" aria-modal="true">
           <button

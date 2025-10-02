@@ -13,7 +13,6 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({
   name,
   year = new Date().getFullYear(),
-  // default English text but will be replaced by translations if available
   legalLabel = translate({ id: 'footer.legal', message: 'Legal notice' }),
   legalHref = '/legal',
 }) => {
@@ -30,7 +29,6 @@ const Footer: React.FC<FooterProps> = ({
           onClick={scrollToTop}
           aria-label="Back to top"
         >
-          {/* simple arrow icon */}
           <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
             <path
               d="M12 5l6 6h-4v8h-4v-8H6l6-6z"
@@ -42,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({
         <div className={styles.copy}>© {name} {year}</div>
 
 <Link className={styles.legal} to="/legal">
-  {legalLabel /* already translated */}
+  {legalLabel}
 </Link>
       </div>
     </footer>

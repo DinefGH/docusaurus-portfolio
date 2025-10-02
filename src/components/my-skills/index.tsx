@@ -3,7 +3,7 @@ import styles from './my-skills.module.css';
 
 export interface SkillItem {
   name: string;
-  iconSrc: string;     // e.g. /img/skills/html.svg
+  iconSrc: string; 
   alt?: string;
 }
 
