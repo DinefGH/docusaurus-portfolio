@@ -101,7 +101,7 @@ This project uses GitHub Actions to deploy automatically to GitHub Pages wheneve
 
     https://**`your-username`**.github.io/**`repo-name`**/
 
-## Usage 
+## Usage
 
 1. Multi-language Support (i18n)
 
