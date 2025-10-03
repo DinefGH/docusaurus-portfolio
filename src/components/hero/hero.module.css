@@ -1,0 +1,101 @@
+.wrap {
+  background: #2166D9;               /* tweak to your exact figma hex */
+  padding: 56px 0;                   /* vertical breathing room */
+}
+
+/* keep hero content centered and narrow */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* two columns: text | image */
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* left column */
+.left {}
+
+.greeting {
+  color: #DDE8FF;
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.name {
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 56px;            /* big name */
+  line-height: 1.05;
+  letter-spacing: 0.2px;
+  margin: 0 0 10px;
+}
+
+.role {
+  color: #EAF1FF;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.about {
+  color: #E0EBFF;
+  max-width: 56ch;
+  line-height: 1.55;
+  margin: 0 0 28px;
+}
+
+/* actions + button */
+.actions { display: flex; gap: 12px; }
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;        /* pill shape like the mock */
+  background: #FFFFFF;
+  color: #1B3F8F;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.cta:hover { filter: brightness(0.98); }
+
+/* right column: image inside a rounded card */
+.right { display: flex; justify-content: center; }
+
+.photoCard {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;         /* rounded container like the mock */
+  overflow: hidden;
+  width: 320px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;          /* match parent rounding */
+}
+
+/* responsive */
+@media (max-width: 980px) {
+  .grid { grid-template-columns: 1fr; }
+  .right { order: -1; margin-bottom: 16px; } /* image above on mobile if you prefer */
+  .name { font-size: 42px; }
+  .role { font-size: 18px; }
+  .photoCard { width: 280px; height: 320px; }
+}

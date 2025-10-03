@@ -1,0 +1,47 @@
+.footer {
+  background: #1f2428;            
+  padding: 48px 16px 64px;
+  color: #cfd8e3;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+
+.toTop {
+  width: 40px;
+  height: 94px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: transparent;
+  color: rgba(255,255,255,0.9);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+.toTop:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+.toTop:active { transform: translateY(0); }
+
+.copy {
+  font-size: 14px;
+  color: #cfd8e3;
+  margin-top: 8px;
+}
+
+.legal {
+  font-size: 14px;
+  color: #cfd8e3;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.legal:hover { color: #ffffff; }
+
+:global(#hero), :global(#my-skills), :global(#my-project-highlights), :global(#contact) {
+  scroll-margin-top: 80px;
+}
