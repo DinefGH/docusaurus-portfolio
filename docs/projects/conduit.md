@@ -190,7 +190,9 @@ FRONTEND_PORT=8282
 
 * We’ve included a GitHub Actions workflow (.github/workflows/deployment.yml) that automatically deploys your conduit-docker branch to your remote server via SSH
 
+```bash
 ([`.github/workflows/deployment.yml`](.github/workflows/deployment.yml))
+```
 
 * How to use this workflow
 
