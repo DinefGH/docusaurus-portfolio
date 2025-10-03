@@ -71,7 +71,7 @@ Optional (but useful for deployment):
     npm run start
     ```
 
-Your site will be available at http://localhost:3000
+Your site will be available at **`http://localhost:3000`**
 
 ## Build and Deployment
 

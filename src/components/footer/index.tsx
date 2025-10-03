@@ -29,12 +29,10 @@ const Footer: React.FC<FooterProps> = ({
           onClick={scrollToTop}
           aria-label="Back to top"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M12 5l6 6h-4v8h-4v-8H6l6-6z"
-              fill="currentColor"
-            />
-          </svg>
+<svg width="24" height="64" viewBox="0 0 24 56" aria-hidden="true">
+  <line x1="12" y1="44" x2="12" y2="12" stroke="currentColor" stroke-width="2" />
+  <path d="M6 18l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" />
+</svg>
         </button>
 
         <div className={styles.copy}>© {name} {year}</div>

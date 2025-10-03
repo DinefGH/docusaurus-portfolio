@@ -11,30 +11,16 @@ export default function ContactMe() {
           <h2 className={styles.title}>
             <Translate id="contact.title">Contact me</Translate>
           </h2>
-          <p className={styles.text}>
-            <Translate id="contact.info">
-              Include information like:
-            </Translate>
-          </p>
+
           <ul className={styles.list}>
             <li>
               <Translate id="contact.point1">
-                Feel free to reach out with job offers or opportunities
+                I’m always excited to connect about new opportunities and collaborations in web development and IT security.
               </Translate>
             </li>
             <li>
               <Translate id="contact.point2">
-                What role are you looking for?
-              </Translate>
-            </li>
-            <li>
-              <Translate id="contact.point3">
-                How you will contribute to the new team
-              </Translate>
-            </li>
-            <li>
-              <Translate id="contact.point4">
-                Are you open for remote work or relocation?
+                Feel free to reach out if you’re looking for a dedicated developer ready to contribute, learn, and grow with your team.
               </Translate>
             </li>
           </ul>

@@ -26,11 +26,11 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      # ⬇️ publish the SUBFOLDER that matches your baseUrl
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build/docusaurus-portfolio  # << important
+          path: ./build/docusaurus-portfolio 
 
   deploy:
     runs-on: ubuntu-latest
