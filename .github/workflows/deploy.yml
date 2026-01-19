@@ -3,7 +3,10 @@ name: Build & Deploy (GitHub Pages) + SAST
 on:
   push:
     branches:
-      - '**'
+      - "**"
+  pull_request:
+    branches:
+      - "**"
   workflow_dispatch:
 
 permissions:
@@ -25,10 +28,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
           languages: javascript
+
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
 
@@ -39,36 +44,51 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Run Semgrep (p/ci rules)
         uses: returntocorp/semgrep-action@v1
         with:
           config: p/ci
-          args: --sarif --output=semgrep.sarif
+          generateSarif: true
+          sarifFile: semgrep.sarif
+
+
       - name: Upload Semgrep SARIF to code scanning
         uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: semgrep.sarif
 
   build:
+    name: Build Docusaurus
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    needs: [sast, semgrep]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
-      - run: npm run build
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build/docusaurus-portfolio 
+          # Use the correct output folder for your repo
+          path: ./build/docusaurus-portfolio
 
   deploy:
+    name: Deploy to GitHub Pages
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
