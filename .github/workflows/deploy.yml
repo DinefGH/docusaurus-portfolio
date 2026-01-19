@@ -26,11 +26,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: javascript
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
 
   semgrep:
     name: Semgrep SAST
@@ -38,15 +38,17 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Run Semgrep (p/ci rules)
         uses: returntocorp/semgrep-action@v1
         with:
           config: p/ci
-          generateSarif: true
+          args: --sarif --output=semgrep.sarif
+      - name: Upload Semgrep SARIF to code scanning
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: semgrep.sarif
 
   build:
     if: github.ref == 'refs/heads/main'
