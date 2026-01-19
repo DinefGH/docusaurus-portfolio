@@ -44,8 +44,7 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Run Semgrep (p/ci rules)
         uses: returntocorp/semgrep-action@v1
@@ -54,6 +53,8 @@ jobs:
           generateSarif: true
           sarifFile: semgrep.sarif
 
+      - name: Verify SARIF exists
+        run: ls -la semgrep.sarif
 
       - name: Upload Semgrep SARIF to code scanning
         uses: github/codeql-action/upload-sarif@v4
