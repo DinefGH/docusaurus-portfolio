@@ -46,6 +46,9 @@ color: var(--text);
 font-family: var(--font-body);
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 .section {
 padding: var(--space-7) 0;
@@ -105,4 +108,100 @@ border-radius: var(--radius);
 
 .footer {
   display: none;
+}
+
+.markdown a {
+  color: #1e90ff; /* change to your desired color */
+  text-decoration: underline;
+}
+
+/* Hover effect */
+.markdown a:hover {
+  color: #0056b3; /* darker blue on hover */
+  text-decoration: underline;
+}
+
+/* Optional: make code links (inside `a > code`) also colored nicely */
+.markdown a code {
+  color: #1e90ff;
+}
+
+
+.markdown strong code {
+  background: #1a3f90;       /* your dark blue */
+  color: #ffffff;            /* white text */
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-weight: 600;          /* keeps bold look */
+}
+
+/* Optional hover if you want clickable feel later */
+.markdown strong code:hover {
+  background: #2166D9;
+  color: #ffffff; 
+}
+
+
+
+.markdown code {
+  background: #1a3f90;   /* your blue */
+  color: #ffffff;        /* white text */
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 90%;
+}
+
+/* Bold inline code (like **`...`**) */
+.markdown strong code {
+  background: #1a3f90;
+  color: #ffffff;
+  padding: 0.25em 0.55em;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Optional hover effect if you want them to pop on hover */
+.markdown code:hover {
+  background: #2166D9;
+  color: #ffffff; 
+}
+
+/* === Fenced code blocks (```bash) === */
+.markdown pre {
+  background: #1a3f90;       /* your blue background */
+  color: #ffffff;            /* text color */
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;
+  font-size: 90%;
+  line-height: 1.5;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+/* Code inside fenced blocks */
+.markdown pre code {
+  background: none; /* remove default bg */
+  color: inherit;   /* use parent color */
+}
+
+/* Optional: add border to separate long code visually */
+.markdown pre {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Optional light/dark theme friendly version */
+:root {
+  --fenced-bg: #eaf1ff;  /* light mode */
+  --fenced-text: #1a3f90;
+}
+
+html[data-theme='dark'] {
+  --fenced-bg: #1a3f90;  /* dark mode */
+  --fenced-text: #ffffff;
+}
+
+.markdown pre {
+  background: var(--fenced-bg);
+  color: var(--fenced-text);
 }
